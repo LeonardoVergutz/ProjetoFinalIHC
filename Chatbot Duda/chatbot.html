@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovatec Soluções - Assistente Duda</title>
+    <link rel="icon" href="logo_innovatec.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0..200" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <aside class="side-nav">
+        <div class="logo-container">
+            <span class="material-symbols-outlined logo-icon">hub</span>
+            <span class="logo-text">Innovatec</span>
+        </div>
+        <nav class="main-nav">
+            <p class="nav-title">Portal do Colaborador</p>
+            <ul>
+                <li><a href="#" class="nav-link disabled" title="Funcionalidade não disponível neste protótipo"><span class="material-symbols-outlined">dashboard</span>Dashboard</a></li>
+                <li><a href="#" class="nav-link disabled" title="Funcionalidade não disponível neste protótipo"><span class="material-symbols-outlined">folder_shared</span>Meus Documentos</a></li>
+                <li><a href="#" class="nav-link disabled" title="Funcionalidade não disponível neste protótipo"><span class="material-symbols-outlined">school</span>Treinamentos</a></li>
+                <li><a href="#" class="nav-link disabled" title="Funcionalidade não disponível neste protótipo"><span class="material-symbols-outlined">assessment</span>Minha Carreira</a></li>
+                <li class="active"><a href="#" class="nav-link"><span class="material-symbols-outlined">support_agent</span>Assistente Duda</a></li>
+            </ul>
+        </nav>
+        <footer class="nav-footer">
+            <p>&copy; 2025 Innovatec Soluções</p>
+        </footer>
+    </aside>
+
+    <main class="main-content">
+        <header id="user-header" class="user-header hidden">
+             <button id="home-button" class="icon-button" aria-label="Voltar ao Menu Principal da Assistente Duda">
+                <span class="material-symbols-outlined">home</span>
+            </button>
+            <div class="user-info">
+                <span id="user-name-display" class="user-name"></span>
+                <span id="user-role-display" class="user-role"></span>
+            </div>
+            <div id="user-avatar" class="user-avatar"></div>
+        </header>
+
+        <section class="chatbot-container" aria-labelledby="chatbot-title-main">
+            <header class="chatbot-header">
+                <h1 id="chatbot-title-main">
+                    <span class="material-symbols-outlined chatbot-title-icon">support_agent</span>
+                    Duda
+                </h1>
+                <p>Sua parceira digital na <span class="innovatec-text-highlight">Innovatec</span>. Pronta para ajudar!</p>
+            </header>
+
+            <div id="chat-body" class="chat-body" role="log" aria-live="polite">
+                </div>
+    
+            <nav id="interaction-container" class="interaction-container" aria-label="Opções da conversa com a assistente Duda">
+                </nav>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

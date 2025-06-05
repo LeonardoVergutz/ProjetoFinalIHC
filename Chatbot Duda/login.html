@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovatec Soluções - Login</title>
+    <link rel="icon" href="logo_innovatec.ico" type="image/x-icon"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page-body">
+
+    <div class="login-container">
+        <div class="logo-container">
+            <span class="material-symbols-outlined logo-icon">hub</span>
+            <span class="logo-text">Innovatec</span>
+        </div>
+        
+        <p class="login-subtitle">Acesse o Portal do Colaborador</p>
+
+        <form id="login-form" class="login-form">
+            <div class="input-group">
+                <label for="username-input" class="visually-hidden">Usuário ou e-mail</label>
+                <div class="input-wrapper">
+                    <span class="material-symbols-outlined input-icon">person</span>
+                    <input type="text" id="username-input" placeholder="Usuário ou e-mail" required autocomplete="username">
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="password-input" class="visually-hidden">Senha</label>
+                <div class="input-wrapper">
+                    <span class="material-symbols-outlined input-icon">key</span>
+                    <input type="password" id="password-input" placeholder="Senha" required autocomplete="current-password">
+                </div>
+            </div>
+            <button id="login-button" type="submit" class="action-btn">Entrar</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('login-form');
+            const usernameInput = document.getElementById('username-input');
+
+            const FEMALE_NAMES = ["Beatriz", "Júlia", "Isabela", "Larissa", "Manuela", "Sofia", "Laura", "Camila", "Clara"];
+            const MALE_NAMES = ["Gabriel", "Matheus", "Enzo", "Rafael", "Lucas", "Pedro", "Guilherme", "André", "Felipe"];
+            const SURNAMES = ["Almeida", "Ferreira", "Lopes", "Ribeiro", "Carvalho", "Gomes", "Martins", "Costa", "Lima"];
+            const ROLES = ["Especialista em Cloud Sênior", "Cientista de Dados Pleno", "Engenheiro(a) de Software Back-end", "DevOps Especialista", "Product Owner Líder", "Scrum Master Certificado", "Analista de QA Sênior", "Arquiteto(a) de Soluções", "UX Designer Principal"];
+            
+            const getRandomElement = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+            const generateRandomUser = (usernameSeed) => {
+                const isFemale = Math.random() < 0.5;
+                const name = isFemale ? getRandomElement(FEMALE_NAMES) : getRandomElement(MALE_NAMES);
+                const surname = getRandomElement(SURNAMES);
+                const fullName = `${name} ${surname}`;
+                const avatarGender = isFemale ? 'girl' : 'boy';
+                const avatarUrl = `https://avatar.iran.liara.run/public/${avatarGender}?username=${encodeURIComponent(usernameSeed || fullName)}`;
+
+                return {
+                    name: fullName,
+                    role: getRandomElement(ROLES),
+                    avatar: avatarUrl,
+                    loginUser: usernameSeed 
+                };
+            };
+
+            loginForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const usernameSeed = usernameInput.value || 'visitante'; 
+
+                const usuario = generateRandomUser(usernameSeed);
+                sessionStorage.setItem('innovatec_user_profile', JSON.stringify(usuario));
+                window.location.href = 'chatbot.html';
+            });
+        });
+    </script>
+</body>
+</html>
